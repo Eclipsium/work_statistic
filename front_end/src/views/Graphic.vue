@@ -43,7 +43,7 @@
         <v-flex
           sm12
           lg3
-          class="mb-4 controls"
+          class="mb-12 controls"
         >
 
           <v-select
@@ -185,10 +185,10 @@
                       height="100%"
                       class="white--text pa-1, text-lg-center"
                     >
-                      <h3>{{ (events[day.date]).name }} </h3>
-                      <h5
+                      <h4>{{ (events[day.date]).name }} </h4>
+                      <h6
                         v-if="events[day.date].workTime">
-                        {{ (events[day.date]).workTime }} часов </h5>
+                        {{ (events[day.date]).workTime }} часов </h6>
                     </v-sheet>
                   </template>
                 </v-layout>

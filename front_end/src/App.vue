@@ -1,23 +1,24 @@
 <template>
   <v-app>
+    <v-content>
       <router-view></router-view>
+    </v-content>
   </v-app>
 </template>
 
 <script>
-import axios from 'axios'
+    import axios from 'axios'
 
-export default {
-  name: 'App',
-  data: () => ({
-  }),
-  beforeUpdate () {
-    let token = this.$store.getters.getToken
-    if (token) {
-      axios.defaults.headers.common['Authorization'] = 'Token ' + token
-    } else {
-      axios.defaults.headers.common['Authorization'] = null
+    export default {
+        name: 'App',
+        data: () => ({}),
+        beforeUpdate() {
+            let token = this.$store.getters.getToken
+            if (token) {
+                axios.defaults.headers.common['Authorization'] = 'Token ' + token
+            } else {
+                axios.defaults.headers.common['Authorization'] = null
+            }
+        }
     }
-  }
-}
 </script>
