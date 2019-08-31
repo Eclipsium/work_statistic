@@ -1,21 +1,21 @@
 const state = {
   on_action: false,
-  alert: null
+  message: null
 }
 const getters = {
-  getAlert() {
-    return state.alert
+  getAlert(state) {
+    return state.message
   },
-  getAction() {
+  getAction(state) {
     return state.on_action
   }
 }
 const mutations = {
   setAlert(state, payload) {
-    state.alert = payload
+    state.message = payload
   },
   clearAlert(state) {
-    state.alert = null
+    state.message = null
   },
   setAction(state, payload) {
     state.on_action = payload

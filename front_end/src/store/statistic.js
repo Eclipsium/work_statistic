@@ -1,9 +1,7 @@
 import axios from "axios";
 
 const state = {
-  yearData: {
-
-  }
+  yearData: null
 }
 
 const getters = {
@@ -19,10 +17,10 @@ const mutations = {
 }
 
 const actions = {
-  loadYearData(context, payload) {
+  async loadYearData(context, payload) {
     context.commit('setAction', true)
     context.commit('clearAlert')
-    axios.get('/stats/year/', {
+    await axios.get('/stats/year/', {
       params: {
         year: 2019
       }
@@ -38,12 +36,12 @@ const actions = {
       })
       .then(function (response) {
         if (!context.getters.getAlert) {
-          console.log(response.data.data)
           context.commit('setYearData', response.data.data)
         }
       })
-    setTimeout(() => context.commit('setAction', false), 1000)
-
+      .finally(
+        context.commit('setAction', false)
+      )
   }
 }
 

@@ -17,8 +17,8 @@ export default new Vuex.Store({
     status
   },
   plugins: [createPersistedState({
-    key: 'store',
-    paths: ['users', 'statistic']
+    key: 'users',
+    paths: ['users']
   })],
   state: {},
   getters: {},

@@ -263,11 +263,11 @@
                 }
                 if (!this.eventId) {
                     this.$store.dispatch('pushEvent', e)
+                        .then(this.renderCalendar)
                 } else {
                     this.$store.dispatch('updateEvent', e)
+                     .then(this.renderCalendar)
                 }
-                this.$store.dispatch('loadYearData', this.year)
-                this.renderCalendar()
             },
             renderCalendar() {
                 this.calendarRending++
@@ -290,7 +290,7 @@
                     date: this.dateToChange
                 }
                 this.$store.dispatch('deleteEvent', payload)
-                this.renderCalendar()
+                 .then(this.renderCalendar)
             }
         },
         data: () => ({
@@ -351,9 +351,9 @@
                 return this.$store.getters.getAction
             }
         },
-        created() {
-            this.renderCalendar()
+        mounted() {
             this.$store.dispatch('loadEvents')
+             .then(this.renderCalendar)
         }
     }
 </script>

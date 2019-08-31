@@ -28,13 +28,13 @@
               <v-select
                 :items="years"
                 v-model="year"
+                :disabled="true"
               >
               </v-select>
             </v-col>
           </v-row>
           <barchart
              v-if="!isLoading"
-            :key="renderedChart"
             :chart-data="yearChart"
             :options="options"
           ></barchart>
@@ -175,17 +175,11 @@
                         label: 'Количество нереализованых выходных',
                         detail: this.getOverWorkedAllTime / 8
                     })
-                this.renderChart()
             },
-            renderChart() {
-                this.setYearChart()
-                this.renderedChart++
-            }
         },
         mounted() {
             this.$store.dispatch('loadYearData', this.year)
-            this.setYearData()
-            this.renderChart()
+             .then(this.setYearChart)
         },
         watch: {
             year () {

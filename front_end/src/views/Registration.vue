@@ -51,7 +51,7 @@
                 <v-text-field
                   type="password"
                   v-model="passwordRepeat"
-                  :rules="[comparePassword]"
+                  :rules="[comparePassword, ]"
                   label="Повторите пароль"
                   required
                 ></v-text-field>
@@ -182,8 +182,8 @@
                 return this.$store.getters.getAction
             },
             comparePassword() {
-                return this.password !== this.passwordRepeat ? 'Пароли не совпадают!' : null
-            }
+                return () => (this.password === this.passwordRepeat) || 'Пароли не совпадают!'
+            },
         }
     }
 </script>

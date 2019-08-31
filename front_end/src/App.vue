@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-content>
-      <router-view></router-view>
+        <router-view></router-view>
     </v-content>
   </v-app>
 </template>
@@ -12,6 +12,11 @@
     export default {
         name: 'App',
         data: () => ({}),
+        watch: {
+        $route(to, from) {
+            document.title = to.meta.title
+        },
+    },
         beforeUpdate() {
             let token = this.$store.getters.getToken
             if (token) {
@@ -19,6 +24,10 @@
             } else {
                 axios.defaults.headers.common['Authorization'] = null
             }
-        }
+        },
     }
+
 </script>
+<style>
+
+</style>

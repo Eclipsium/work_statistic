@@ -78,7 +78,7 @@
     export default {
         data: () => ({
             valid: true,
-            password: 'sdsdenge',
+            password: '',
             passwordRules: [
                 v => !!v || 'Введите пароль',
                 v => (v && v.length >= 6) || 'Пароль должен быть больше 6 символов!'

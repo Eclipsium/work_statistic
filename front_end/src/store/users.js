@@ -4,13 +4,16 @@ import router from '../router'
 const state = {
   user_token: null,
   auth: false
-}
+};
 const getters = {
   getToken(state) {
     return state.user_token
+  },
+  getAuth(state) {
+    return state.auth
   }
 
-}
+};
 const mutations = {
   setToken(state, payload) {
     state.user_token = payload
@@ -40,7 +43,7 @@ const actions = {
             message: 'Вы успешно вошли!',
             type: 'success'
           })
-          setTimeout(() => router.push('/dashboard/'), 500)
+          setTimeout(() => router.push('/graphic/'), 500)
         }
       })
       .catch(function (error) {

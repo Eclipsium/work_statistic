@@ -31,8 +31,7 @@ class GetYearStats(APIView):
             month = month_dict[event.date.month]
 
             try:
-                if response[month]:
-                    print(response[month])
+                response[month]
             except KeyError:
                 stats_work_time = 0
                 work_days = 0
