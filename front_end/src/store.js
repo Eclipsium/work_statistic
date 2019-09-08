@@ -6,6 +6,7 @@ import events from './store/events'
 import statistic from './store/statistic'
 import users from './store/users'
 import status from './store/status'
+import profile from "./store/profile";
 
 Vue.use(Vuex)
 
@@ -14,7 +15,8 @@ export default new Vuex.Store({
     events,
     statistic,
     users,
-    status
+    status,
+    profile
   },
   plugins: [createPersistedState({
     key: 'users',

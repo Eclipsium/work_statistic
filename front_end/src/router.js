@@ -86,6 +86,22 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/NotFound404.vue')
     },
     {
+      path: '/about',
+      name: 'about',
+      meta: { title: 'О проекте' },
+      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    },
+    {
+      path: '/github',
+      name: 'github',
+      beforeEnter() {location.href = 'https://github.com/Eclipsium/work_statistic'}
+    },
+    {
+      path: '/bug',
+      name: 'bug',
+      beforeEnter() {location.href = 'mailto:abiogenesis70ru@gmail.com'}
+    },
+    {
       path: '*',
       redirect: '/404PageNotFound',
     }

@@ -21,6 +21,7 @@ const mutations = {
   setAuth(state) {
     state.auth = true
   },
+
   logout(state) {
     state.auth = false
     state.user_token = null
@@ -28,13 +29,14 @@ const mutations = {
   }
 }
 const actions = {
-  login(context, payload) {
+  async login(context, payload) {
     context.commit('setAction', true)
     context.commit('clearAlert')
+
     const params = new URLSearchParams()
     params.append('email', payload.email)
     params.append('password', payload.password)
-    axios.post('auth/token/login/', params)
+    await axios.post('auth/token/login/', params)
       .then(function (response) {
         if (!context.getters.getAlert) {
           context.commit('setToken', response.data.data.id)
@@ -53,12 +55,12 @@ const actions = {
             type: 'error'
           })
         }
-      })
-    context.commit('setAction', false)
+      }).finally(context.commit('setAction', false))
   },
   register(context, payload) {
     context.commit('setAction', true)
     context.commit('clearAlert')
+
     const params = new URLSearchParams()
     params.append('email', payload.email)
     params.append('password', payload.password)

@@ -13,10 +13,10 @@
         name: 'App',
         data: () => ({}),
         watch: {
-        $route(to, from) {
-            document.title = to.meta.title
+            $route(to, from) {
+                document.title = to.meta.title
+            },
         },
-    },
         beforeUpdate() {
             let token = this.$store.getters.getToken
             if (token) {

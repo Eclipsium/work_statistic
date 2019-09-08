@@ -109,7 +109,7 @@
                         active: false
                     },
                     {
-                        title: 'Настройки',
+                        title: 'Профиль',
                         icon: 'mdi-account-settings',
                         route: '/config/',
                         active: true

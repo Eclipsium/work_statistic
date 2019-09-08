@@ -179,7 +179,8 @@
         },
         mounted() {
             this.$store.dispatch('loadYearData', this.year)
-             .then(this.setYearChart)
+             .then(this.setYearData)
+                .then(this.setYearChart)
         },
         watch: {
             year () {
